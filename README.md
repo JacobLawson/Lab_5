@@ -2,6 +2,8 @@ Lab_5
 =====
 #####Discussion of 1st Program Operation
 
+The First program would start with a value of 8, increment by 1, and then display the new number, 9. This would keep
+repeating,as PRISM would recognize numbers above 8 as negative, and would stop at 0 and keep displaying 0. So the output should read: 9,A,B,C,D,E,F,0. This is important for recognizing cases or passwords of sorts. The JN served as a check, and by using it we could set conditions for certain instructions to be read. Again, a password of sorts.
 
 #####Discussion of 1st Program Instruction Cycles
 
