@@ -10,10 +10,30 @@ repeating,as PRISM would recognize numbers above 8 as negative, and would stop a
 
 ![alt text] (http://i61.tinypic.com/2mnqk5e.png)
 
+5ns-15ns Fetch, This fetches the number from the IR and directs the next opcode, In this case, IRLD is loaded as a 7 from the Data.
+15ns-25ns Decodes, Interprets the number as a specific opcode, in this case, the Opcode is 7, or LDAI. It then determines
+if more data will be needed from memory to execute the opcode. In this case, no more memory is needed so we go to next phase
+25ns-35ns Immediate Execute, the PC is place on the addr bus, the first operand goes on data bus, and the lower 3 bits of the opcode go the the ALU as OPSel. The result is thrown on the Acc, and the PC is incremented to the next instruction. Then we do Fetch again
 
+35ns-45ns Fetch, Number 6 is read from IR
+45ns-55ns Decode, Number is is interpreted as Opcode 6, or addi. In this case, more memory is not needed so we go to immediate execute
+55ns-65ns Immediate Execute, Same process as above in the previous immediate execute. The PC increments and we Fetch again
+
+65ns-75ns Fetch, Number 4 is read from the IR
+75ns-85ns Decode, Number 4 is interpreted to be out 3, more data from memory will be needed to execute this instruction
 
 ![alt text] (http://i57.tinypic.com/1zn02z9.png)
 
+85ns-95ns Decode LoAddr, The PC increments, The operand, or 4 bit port number, is stored into MARLo. The data to be output is stored on the data bus for later as well. Since the IR reads 4, this means we will go to Direct IO execute.
+95-105ns Direct I/O Execute, The controller sends the lower 3 bits of the Opcode to the ALU via OpSel. The MARLo register holding which port will be used as output is placed on the Addr bus. Since this is an OUT operation, the value in the Acc is placed on the data bus via EnAccBuff. Then we moved to Fetch
+
+105ns-115 Fetch, Number b is read from the IR
+115ns-125 Decode, Number b is interpreted as Opcode b, or jn. In this case more data will be needed to complete the instruction
+125ns-135ns Decode LoAddr, Same as the Decode LoAddr discussed above, except in this case the IR reads b, so the next instruction will be Decode HiAddr
+145ns-155ns Decod HiAddr, The PC increments, the second operand is stored on the data bus, the upper 4 bits of the memory location are stored into MARHi. The IR reads b, so this means that the next phase will be JMP execute
+135ns-145ns JMP Execute, The IR is holding a JN Opcode, the value in the MAR is then loaded in the PC if A is less than 0. In this case, A is less than 0 so the JN is executed
+155ns-165ns Fetch, Number 6 is read from the IR. This is a loop and it will keep repeating from the beginning of 35ns and onwards until we get a positive number. Once we get a positive number, the program will jump to the end instruction and keep looping from there.
+165-... Loop keeps repeating and jumps to end eventually.
 
 #####Answers to PRISM Questions
 
