@@ -8,8 +8,22 @@ repeating,as PRISM would recognize numbers above 8 as negative, and would stop a
 #####Discussion of 1st Program Instruction Cycles
 
 
+![alt text] (http://i61.tinypic.com/2mnqk5e.png)
+
+
+
+![alt text] (http://i57.tinypic.com/1zn02z9.png
+
+)
 
 #####Answers to PRISM Questions
+
+1
+2
+3
+4
+5
+
 
 #####Notes
 The Demonstration for the 2nd Program involving counting up and down was delayed due to PRISM not updating the address of its opcodes. 
