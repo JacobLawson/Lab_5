@@ -37,11 +37,34 @@ if more data will be needed from memory to execute the opcode. In this case, no 
 
 #####Answers to PRISM Questions
 
+1.	When the controller’s current state is “FETCH,” what is the status of the following control lines:
+
+a.	PCLd- High
+
+b.	IRLd-High
+
+c.	ACCLd-Low
+
+2.	The current state is Decode LoAddr and the IR contains “OUT.”  What are the control signals are asserted, and what will the next state be?
+
+The Control Signals asserted are MARLoLd and PCld, the next state will be Direct IO Execute
+
+
+3.	What are the three status signals sent from the PRISM datapath to the PRISM controller?
+
 1
-2
-3
-4
-5
+A=0
+A>0
+
+
+4.	Why is it important that ACCLd signal be active during the execute state for the ADDI instruction?
+
+ADDI is supposed to add the value in the operand to the accumulator. For this to happen, the value in the accumulator needs to be known, and it is known by loading the ACCLd signal.
+
+
+5.	What changes are necessary to the PRISM datapath to add another instruction (SUBI, which would subtract an immediate value from the accumulator) to the instruction set?
+
+Welp, all of the combos available with 4 bits for instructions are used up, so another bit would be needed to have another instruction. A 5 bit opcode would be needed, and the PRISM datapath would need to accommodate
 
 
 #####Notes
