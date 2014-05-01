@@ -12,9 +12,8 @@ repeating,as PRISM would recognize numbers above 8 as negative, and would stop a
 
 
 
-![alt text] (http://i57.tinypic.com/1zn02z9.png
+![alt text] (http://i57.tinypic.com/1zn02z9.png)
 
-)
 
 #####Answers to PRISM Questions
 
